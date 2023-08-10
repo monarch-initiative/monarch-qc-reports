@@ -2,7 +2,6 @@
 import logging
 
 import click
-
 from monarch_qc_reports import __version__
 from monarch_qc_reports.main import demo
 

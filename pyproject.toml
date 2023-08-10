@@ -11,6 +11,7 @@ python = "^3.10"
 click = "*"
 importlib-metadata = "^4.8.0"
 poetry-dynamic-versioning = "^0.25.0"
+pandas = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = {version = ">=7.1.2"}
