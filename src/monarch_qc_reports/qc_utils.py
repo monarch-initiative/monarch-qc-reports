@@ -5,7 +5,7 @@ from typing import Dict, List, Union
 import pandas as pd
 
 # from grape import Graph  # type: ignore
-from model.merged_kg import MergedKG, MergeQC
+from monarch_qc_reports.model.merged_kg import MergedKG, MergeQC
 
 
 def create_edge_report(edges_grouped_by, edges_grouped_by_values, unique_id_from_nodes) -> Dict:
@@ -139,7 +139,6 @@ def create_edges_report(
             edge_object["missing_subject_namespaces"] = missing_subject_namespaces
             missing_object_namespaces = get_namespace(get_missing(edge_group_values, ["object"], nodes["id"]))
             edge_object["missing_object_namespaces"] = missing_object_namespaces
-
         edges_report.add(edge_object)
     return edges_report.data
 

@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import IO, List, Optional, Union
 
 import pandas as pd
-from model.merged_kg import MergedKG, MergeQC
+
+from monarch_qc_reports.model.merged_kg import MergedKG, MergeQC
 
 
 def get_files(filepath: str, nodes_match: str = "_nodes", edges_match: str = "_edges"):
@@ -26,7 +27,9 @@ def get_files(filepath: str, nodes_match: str = "_nodes", edges_match: str = "_e
     """
     node_files = []
     edge_files = []
+    print(filepath)
     for file in os.listdir(filepath):
+        print(file)
         if nodes_match in file:
             node_files.append(f"{filepath}/{file}")
         elif edges_match in file:
@@ -186,7 +189,6 @@ def read_kg(
         edges = read_df(edge_file, add_source_col, node_file)
     else:
         raise ValueError("Must specify either nodes & edges or source")
-
     kg = MergedKG(nodes, edges)
     return kg
 
@@ -231,7 +233,6 @@ def read_qc(source: str = None) -> MergeQC:
             raise ValueError("source is not an archive or directory")
     else:
         raise ValueError("Must specify source")
-
     return MergeQC(duplicate_nodes=duplicate_nodes, dangling_edges=dangling_edges, duplicate_edges=duplicate_edges)
 
 
